@@ -1,0 +1,16 @@
+version: '3'
+services:
+  main:
+    container_name: c7lamp
+    image: centos7-lamp
+    volumes:
+      - ./db:/mnt/db
+      - ./www:/var/www/html
+      - ./tool:/mnt/tool
+    environment:
+      - PROJECT_NAME=lamp
+      - ENABLE_VHOST=false
+    command: >
+        /mnt/tool/start.sh
+    ports:
+      - 8000:80
