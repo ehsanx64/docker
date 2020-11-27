@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  node:
+    image: node:14.15.1
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 3000:3000
+      - 9229:9229
+    command: bash /usr/src/app/start.sh
