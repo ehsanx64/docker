@@ -1,0 +1,11 @@
+version: "3"
+services:
+  main:
+    container_name: stretch_main
+    build: .
+    volumes: 
+      - ./tool:/mnt/tool
+    environment: 
+      - INTERACTIVE=yes
+    command: >
+      /mnt/tool/start
