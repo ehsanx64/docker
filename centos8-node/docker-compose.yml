@@ -1,0 +1,12 @@
+version: '3'
+services:
+  main:
+    container_name: c8node
+    image: centos8-node
+    volumes:
+      - ./tool:/mnt/tool
+      - ./app:/app
+    command: >
+        bash /mnt/tool/start.bash
+    ports:
+      - 8000:80
