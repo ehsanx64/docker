@@ -1,0 +1,12 @@
+version: "3"
+services:
+  main:
+    container_name: 14.15.4
+    build: .
+    working_dir: /usr/app
+    volumes: 
+      - .:/usr/app/
+    environment: 
+      - INTERACTIVE=yes
+    command: >
+      tail -f
