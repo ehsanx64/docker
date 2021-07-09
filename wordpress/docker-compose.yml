@@ -1,0 +1,45 @@
+version: '3.3'
+
+services:
+    httpd:
+        container_name: ${COMPOSE_PROJECT_NAME}-httpd
+        image: php7.4:latest
+        ports:
+            - "${HTTPD_PORT}:80"
+        volumes:
+            - "./www:/var/www/html"
+        networks:
+            - net
+    
+    db:
+        container_name: ${COMPOSE_PROJECT_NAME}-mariadb
+        image: mariadb:10.5.2
+        volumes:
+            - mariadb:/var/lib/mysql
+            - ./data:/mnt/data
+        networks:
+            - net
+        environment:
+            TZ: "Asia/Tehran"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_ROOT_PASSWORD: "rootpwd"
+            MYSQL_USER: "${COMPOSE_PROJECT_NAME}"
+            MYSQL_PASSWORD: "${COMPOSE_PROJECT_NAME}"
+            MYSQL_DATABASE: "${COMPOSE_PROJECT_NAME}"
+
+    phpmyadmin:
+        container_name: ${COMPOSE_PROJECT_NAME}-phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "${PHPMYADMIN_PORT}:80"
+        networks:
+            - net
+        environment:
+            PMA_HOST: db
+
+volumes:
+    mariadb:
+
+networks:
+    net:
+        driver: bridge

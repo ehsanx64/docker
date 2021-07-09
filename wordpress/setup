@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "# Downloading latest WordPress distribution ..."
+wget -q --show-progress https://wordpress.org/latest.zip
+
+if [ -f latest.zip ]; then
+    echo "# Extracting the archive ..."
+    unzip -q latest.zip -d .
+    mv wordpress www
+    rm latest.zip
+    rm -fr www/wp-content/themes/twentynineteen
+    rm -fr www/wp-content/themes/twentytwenty
+    rm -fr www/wp-content/plugins/akismet
+fi;
+
+echo "# Done!"
+
+echo "# Import t minimal database script into your database server if you don't have it already. Username\Password is admin\admin"
