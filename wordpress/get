@@ -1,0 +1,17 @@
+#!/bin/bash
+
+retval=""
+
+case $1 in
+	"themes")
+		retval="www/wp-content/themes"
+		;;
+	"plugins")
+		retval="www/wp-content/plugins"
+		;;
+	"*")
+		retval="No key given"
+		;;
+esac
+
+echo $retval
