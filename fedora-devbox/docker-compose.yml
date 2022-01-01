@@ -1,0 +1,13 @@
+version: '3'
+services:
+  main:
+    container_name: fedora-devbox
+    image: fedora-devbox_main:latest
+    build: .
+    volumes:
+      - ./tool:/mnt/tool
+      - ./dev:/root/dev
+    command: >
+        bash /mnt/tool/start.bash
+    ports:
+      - 8000:80
