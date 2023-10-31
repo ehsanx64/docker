@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+case $1 in
+    build)
+	    docker build -t lnmp .
+        ;;
+
+    rebuild)
+	    docker rmi lnmp
+	    docker build -t lnmp .
+        ;;
+
+	*)
+		docker run -it --rm --name lnm lnmp
+        ;;
+esac
+
+
