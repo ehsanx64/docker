@@ -5,8 +5,7 @@ WORKDIR /var/www/html
 RUN apk update \
     && apk add nginx
 
-COPY ./index.php .
-COPY ./default.conf /etc/nginx/http.d/default.conf
+COPY ./conf/nginx.conf /etc/nginx/http.d/default.conf
 
 EXPOSE 80
 
